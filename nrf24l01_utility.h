@@ -98,7 +98,9 @@ inline void encode_enhanced_shock_burst_packet(uint8_t preamble,
     memcpy(packet + sizeof(preamble), &control_field, sizeof(control_field));
     memcpy(packet + sizeof(preamble) + sizeof(control_field), address, address_len);
     memcpy(packet + sizeof(preamble) + sizeof(control_field) + address_len, payload, payload_len);
-    memcpy(packet + sizeof(preamble) + sizeof(control_field) + address_len + payload_len, crc, crc_len);
+    memcpy(packet + sizeof(preamble) + sizeof(control_field) + address_len + payload_len,
+           crc,
+           crc_len);
 }
 
 inline void decode_enhanced_shock_burst_packet(uint8_t const* packet,
@@ -122,7 +124,9 @@ inline void decode_enhanced_shock_burst_packet(uint8_t const* packet,
     memcpy(control_field, packet + sizeof(*preamble), sizeof(*control_field));
     memcpy(address, packet + sizeof(*preamble) + sizeof(*control_field), address_len);
     memcpy(payload, packet + sizeof(*preamble) + sizeof(*control_field) + address_len, payload_len);
-    memcpy(crc, packet + sizeof(*preamble) + sizeof(*control_field) + address_len + payload_len, crc_len);
+    memcpy(crc,
+           packet + sizeof(*preamble) + sizeof(*control_field) + address_len + payload_len,
+           crc_len);
 }
 
 inline uint32_t nrf24l01_frequency_mhz_to_rf_channel_frequency(uint32_t frequency_mhz)
@@ -130,14 +134,19 @@ inline uint32_t nrf24l01_frequency_mhz_to_rf_channel_frequency(uint32_t frequenc
     return frequency_mhz - 2400UL;
 }
 
-inline uint32_t
-nrf24l01_get_time_on_air_ns(size_t address_size, size_t payload_size, size_t crc_size, nrf24l01_air_rate_t air_rate)
+inline uint32_t nrf24l01_get_time_on_air_ns(size_t address_size,
+                                            size_t payload_size,
+                                            size_t crc_size,
+                                            nrf24l01_air_rate_t air_rate)
 {
-    return 1000000000UL * (8UL * (1UL + address_size + payload_size + crc_size) + 9UL) / air_rate_to_bps(air_rate);
+    return 1000000000UL * (8UL * (1UL + address_size + payload_size + crc_size) + 9UL) /
+           air_rate_to_bps(air_rate);
 }
 
-inline uint32_t
-get_time_on_air_ack_ns(size_t address_size, size_t payload_size, size_t crc_size, nrf24l01_air_rate_t air_rate)
+inline uint32_t get_time_on_air_ack_ns(size_t address_size,
+                                       size_t payload_size,
+                                       size_t crc_size,
+                                       nrf24l01_air_rate_t air_rate)
 {
     return get_time_on_air_ns(address_size, payload_size, crc_size, air_rate);
 }
@@ -155,7 +164,8 @@ inline uint32_t get_time_enhcanced_shock_burst_cycle_ns(size_t address_size,
 {
     return get_time_upload_ns(payload_size, spi_rate_bps) + 2 * NRF24L01_TIME_STANDBY_2A_NS +
            get_time_on_air_ns(address_size, payload_size, crc_size, air_rate) +
-           get_time_on_air_ack_ns(address_size, payload_size, crc_size, air_rate) + air_rate_to_irq_time_ns(air_rate);
+           get_time_on_air_ack_ns(address_size, payload_size, crc_size, air_rate) +
+           air_rate_to_irq_time_ns(air_rate);
 }
 
 #endif // NRF24L01_NRF24L01_UTILITY_H
