@@ -5,9 +5,7 @@ target_sources(nrf24l01 PRIVATE
 )
 
 target_include_directories(nrf24l01 PUBLIC
-)
-
-target_link_libraries(nrf24l01 PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 target_compile_options(nrf24l01 PUBLIC
