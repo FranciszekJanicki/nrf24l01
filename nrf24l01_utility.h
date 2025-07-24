@@ -6,7 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-inline uint8_t nrf24l01_pipe_aw_to_address_bytes(nrf24l01_pipe_address_len_t address_width)
+inline uint8_t nrf24l01_pipe_aw_to_address_bytes(
+    nrf24l01_pipe_address_len_t address_width)
 {
     switch (address_width) {
         case NRF24L01_PIPE_ADDRESS_LEN_3BYTES:
@@ -96,9 +97,14 @@ inline void encode_enhanced_shock_burst_packet(uint8_t preamble,
 
     memcpy(packet, &preamble, sizeof(preamble));
     memcpy(packet + sizeof(preamble), &control_field, sizeof(control_field));
-    memcpy(packet + sizeof(preamble) + sizeof(control_field), address, address_len);
-    memcpy(packet + sizeof(preamble) + sizeof(control_field) + address_len, payload, payload_len);
-    memcpy(packet + sizeof(preamble) + sizeof(control_field) + address_len + payload_len,
+    memcpy(packet + sizeof(preamble) + sizeof(control_field),
+           address,
+           address_len);
+    memcpy(packet + sizeof(preamble) + sizeof(control_field) + address_len,
+           payload,
+           payload_len);
+    memcpy(packet + sizeof(preamble) + sizeof(control_field) + address_len +
+               payload_len,
            crc,
            crc_len);
 }
@@ -122,14 +128,20 @@ inline void decode_enhanced_shock_burst_packet(uint8_t const* packet,
 
     memcpy(preamble, packet, sizeof(*preamble));
     memcpy(control_field, packet + sizeof(*preamble), sizeof(*control_field));
-    memcpy(address, packet + sizeof(*preamble) + sizeof(*control_field), address_len);
-    memcpy(payload, packet + sizeof(*preamble) + sizeof(*control_field) + address_len, payload_len);
+    memcpy(address,
+           packet + sizeof(*preamble) + sizeof(*control_field),
+           address_len);
+    memcpy(payload,
+           packet + sizeof(*preamble) + sizeof(*control_field) + address_len,
+           payload_len);
     memcpy(crc,
-           packet + sizeof(*preamble) + sizeof(*control_field) + address_len + payload_len,
+           packet + sizeof(*preamble) + sizeof(*control_field) + address_len +
+               payload_len,
            crc_len);
 }
 
-inline uint32_t nrf24l01_frequency_mhz_to_rf_channel_frequency(uint32_t frequency_mhz)
+inline uint32_t nrf24l01_frequency_mhz_to_rf_channel_frequency(
+    uint32_t frequency_mhz)
 {
     return frequency_mhz - 2400UL;
 }
@@ -139,7 +151,8 @@ inline uint32_t nrf24l01_get_time_on_air_ns(size_t address_size,
                                             size_t crc_size,
                                             nrf24l01_air_rate_t air_rate)
 {
-    return 1000000000UL * (8UL * (1UL + address_size + payload_size + crc_size) + 9UL) /
+    return 1000000000UL *
+           (8UL * (1UL + address_size + payload_size + crc_size) + 9UL) /
            air_rate_to_bps(air_rate);
 }
 
@@ -156,15 +169,20 @@ inline uint32_t get_time_upload_ns(size_t payload_size, uint32_t spi_rate_bps)
     return 1000000000UL * 8UL * payload_size / spi_rate_bps;
 }
 
-inline uint32_t get_time_enhcanced_shock_burst_cycle_ns(size_t address_size,
-                                                        size_t payload_size,
-                                                        size_t crc_size,
-                                                        nrf24l01_air_rate_t air_rate,
-                                                        uint32_t spi_rate_bps)
+inline uint32_t get_time_enhcanced_shock_burst_cycle_ns(
+    size_t address_size,
+    size_t payload_size,
+    size_t crc_size,
+    nrf24l01_air_rate_t air_rate,
+    uint32_t spi_rate_bps)
 {
-    return get_time_upload_ns(payload_size, spi_rate_bps) + 2 * NRF24L01_TIME_STANDBY_2A_NS +
+    return get_time_upload_ns(payload_size, spi_rate_bps) +
+           2 * NRF24L01_TIME_STANDBY_2A_NS +
            get_time_on_air_ns(address_size, payload_size, crc_size, air_rate) +
-           get_time_on_air_ack_ns(address_size, payload_size, crc_size, air_rate) +
+           get_time_on_air_ack_ns(address_size,
+                                  payload_size,
+                                  crc_size,
+                                  air_rate) +
            air_rate_to_irq_time_ns(air_rate);
 }
 

@@ -36,11 +36,13 @@ nrf24l01_err_t nrf24l01_is_payload_available(nrf24l01_t const* nrf24l01,
                                              nrf24l01_pipe_num_t pipe_num,
                                              bool* is_payload_available);
 
-nrf24l01_err_t nrf24l01_open_writing_pipe(nrf24l01_t const* nrf24l01,
-                                          nrf24l01_pipe_address_t* pipe_address);
-nrf24l01_err_t nrf24l01_open_reading_pipe(nrf24l01_t const* nrf24l01,
-                                          nrf24l01_pipe_num_t pipe_num,
-                                          nrf24l01_pipe_address_t* pipe_address);
+nrf24l01_err_t nrf24l01_open_writing_pipe(
+    nrf24l01_t const* nrf24l01,
+    nrf24l01_pipe_address_t* pipe_address);
+nrf24l01_err_t nrf24l01_open_reading_pipe(
+    nrf24l01_t const* nrf24l01,
+    nrf24l01_pipe_num_t pipe_num,
+    nrf24l01_pipe_address_t* pipe_address);
 
 nrf24l01_err_t nrf24l01_close_reading_pipe(nrf24l01_t const* nrf24l01,
                                            nrf24l01_pipe_num_t pipe_num);
@@ -54,108 +56,133 @@ nrf24l01_err_t nrf24l01_reuse_tx(nrf24l01_t const* nrf24l01);
 nrf24l01_err_t nrf24l01_set_chip_enable(nrf24l01_t const* nrf24l01);
 nrf24l01_err_t nrf24l01_reset_chip_enable(nrf24l01_t const* nrf24l01);
 
-nrf24l01_err_t nrf24l01_get_config_reg(nrf24l01_t const* nrf24l01, nrf24l01_config_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_config_reg(nrf24l01_t const* nrf24l01,
+                                       nrf24l01_config_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_config_reg(nrf24l01_t const* nrf24l01,
                                        nrf24l01_config_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_en_aa_reg(nrf24l01_t const* nrf24l01, nrf24l01_en_aa_reg_t* reg);
-nrf24l01_err_t nrf24l01_set_en_aa_reg(nrf24l01_t const* nrf24l01, nrf24l01_en_aa_reg_t const* reg);
+nrf24l01_err_t nrf24l01_get_en_aa_reg(nrf24l01_t const* nrf24l01,
+                                      nrf24l01_en_aa_reg_t* reg);
+nrf24l01_err_t nrf24l01_set_en_aa_reg(nrf24l01_t const* nrf24l01,
+                                      nrf24l01_en_aa_reg_t const* reg);
 
 nrf24l01_err_t nrf24l01_get_en_rxaddr_reg(nrf24l01_t const* nrf24l01,
                                           nrf24l01_en_rxaddr_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_en_rxaddr_reg(nrf24l01_t const* nrf24l01,
                                           nrf24l01_en_rxaddr_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_setup_aw_reg(nrf24l01_t const* nrf24l01, nrf24l01_setup_aw_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_setup_aw_reg(nrf24l01_t const* nrf24l01,
+                                         nrf24l01_setup_aw_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_setup_aw_reg(nrf24l01_t const* nrf24l01,
                                          nrf24l01_setup_aw_reg_t const* reg);
 
 nrf24l01_err_t nrf24l01_get_setup_retr_reg(nrf24l01_t const* nrf24l01,
                                            nrf24l01_setup_retr_reg_t* reg);
-nrf24l01_err_t nrf24l01_set_setup_retr_reg(nrf24l01_t const* nrf24l01,
-                                           nrf24l01_setup_retr_reg_t const* reg);
+nrf24l01_err_t nrf24l01_set_setup_retr_reg(
+    nrf24l01_t const* nrf24l01,
+    nrf24l01_setup_retr_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_rf_ch_reg(nrf24l01_t const* nrf24l01, nrf24l01_rf_ch_reg_t* reg);
-nrf24l01_err_t nrf24l01_set_rf_ch_reg(nrf24l01_t const* nrf24l01, nrf24l01_rf_ch_reg_t const* reg);
+nrf24l01_err_t nrf24l01_get_rf_ch_reg(nrf24l01_t const* nrf24l01,
+                                      nrf24l01_rf_ch_reg_t* reg);
+nrf24l01_err_t nrf24l01_set_rf_ch_reg(nrf24l01_t const* nrf24l01,
+                                      nrf24l01_rf_ch_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_rf_setup_reg(nrf24l01_t const* nrf24l01, nrf24l01_rf_setup_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_rf_setup_reg(nrf24l01_t const* nrf24l01,
+                                         nrf24l01_rf_setup_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_rf_setup_reg(nrf24l01_t const* nrf24l01,
                                          nrf24l01_rf_setup_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_status_reg(nrf24l01_t const* nrf24l01, nrf24l01_status_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_status_reg(nrf24l01_t const* nrf24l01,
+                                       nrf24l01_status_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_status_reg(nrf24l01_t const* nrf24l01,
                                        nrf24l01_status_reg_t const* reg);
 
 nrf24l01_err_t nrf24l01_get_observe_tx_reg(nrf24l01_t const* nrf24l01,
                                            nrf24l01_observe_tx_reg_t* reg);
 
-nrf24l01_err_t nrf24l01_get_rpd_reg(nrf24l01_t const* nrf24l01, nrf24l01_rpd_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_rpd_reg(nrf24l01_t const* nrf24l01,
+                                    nrf24l01_rpd_reg_t* reg);
 
 nrf24l01_err_t nrf24l01_get_rx_addr_p0_reg(nrf24l01_t const* nrf24l01,
                                            nrf24l01_rx_addr_p0_reg_t* reg);
-nrf24l01_err_t nrf24l01_set_rx_addr_p0_reg(nrf24l01_t const* nrf24l01,
-                                           nrf24l01_rx_addr_p0_reg_t const* reg);
+nrf24l01_err_t nrf24l01_set_rx_addr_p0_reg(
+    nrf24l01_t const* nrf24l01,
+    nrf24l01_rx_addr_p0_reg_t const* reg);
 
 nrf24l01_err_t nrf24l01_get_rx_addr_p1_reg(nrf24l01_t const* nrf24l01,
                                            nrf24l01_rx_addr_p1_reg_t* reg);
-nrf24l01_err_t nrf24l01_set_rx_addr_p1_reg(nrf24l01_t const* nrf24l01,
-                                           nrf24l01_rx_addr_p1_reg_t const* reg);
+nrf24l01_err_t nrf24l01_set_rx_addr_p1_reg(
+    nrf24l01_t const* nrf24l01,
+    nrf24l01_rx_addr_p1_reg_t const* reg);
 
 nrf24l01_err_t nrf24l01_get_rx_addr_p2_reg(nrf24l01_t const* nrf24l01,
                                            nrf24l01_rx_addr_p2_reg_t* reg);
-nrf24l01_err_t nrf24l01_set_rx_addr_p2_reg(nrf24l01_t const* nrf24l01,
-                                           nrf24l01_rx_addr_p2_reg_t const* reg);
+nrf24l01_err_t nrf24l01_set_rx_addr_p2_reg(
+    nrf24l01_t const* nrf24l01,
+    nrf24l01_rx_addr_p2_reg_t const* reg);
 
 nrf24l01_err_t nrf24l01_get_rx_addr_p3_reg(nrf24l01_t const* nrf24l01,
                                            nrf24l01_rx_addr_p3_reg_t* reg);
-nrf24l01_err_t nrf24l01_set_rx_addr_p3_reg(nrf24l01_t const* nrf24l01,
-                                           nrf24l01_rx_addr_p3_reg_t const* reg);
+nrf24l01_err_t nrf24l01_set_rx_addr_p3_reg(
+    nrf24l01_t const* nrf24l01,
+    nrf24l01_rx_addr_p3_reg_t const* reg);
 
 nrf24l01_err_t nrf24l01_get_rx_addr_p4_reg(nrf24l01_t const* nrf24l01,
                                            nrf24l01_rx_addr_p4_reg_t* reg);
-nrf24l01_err_t nrf24l01_set_rx_addr_p4_reg(nrf24l01_t const* nrf24l01,
-                                           nrf24l01_rx_addr_p4_reg_t const* reg);
+nrf24l01_err_t nrf24l01_set_rx_addr_p4_reg(
+    nrf24l01_t const* nrf24l01,
+    nrf24l01_rx_addr_p4_reg_t const* reg);
 
 nrf24l01_err_t nrf24l01_get_rx_addr_p5_reg(nrf24l01_t const* nrf24l01,
                                            nrf24l01_rx_addr_5_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_rx_addr_p5_reg(nrf24l01_t const* nrf24l01,
                                            nrf24l01_rx_addr_5_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_tx_addr_reg(nrf24l01_t const* nrf24l01, nrf24l01_tx_addr_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_tx_addr_reg(nrf24l01_t const* nrf24l01,
+                                        nrf24l01_tx_addr_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_tx_addr_reg(nrf24l01_t const* nrf24l01,
                                         nrf24l01_tx_addr_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_rx_pw_p0_reg(nrf24l01_t const* nrf24l01, nrf24l01_rx_pw_p0_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_rx_pw_p0_reg(nrf24l01_t const* nrf24l01,
+                                         nrf24l01_rx_pw_p0_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_rx_pw_p0_reg(nrf24l01_t const* nrf24l01,
                                          nrf24l01_rx_pw_p0_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_rx_pw_p1_reg(nrf24l01_t const* nrf24l01, nrf24l01_rx_pw_p1_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_rx_pw_p1_reg(nrf24l01_t const* nrf24l01,
+                                         nrf24l01_rx_pw_p1_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_rx_pw_p1_reg(nrf24l01_t const* nrf24l01,
                                          nrf24l01_rx_pw_p1_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_rx_pw_p2_reg(nrf24l01_t const* nrf24l01, nrf24l01_rx_pw_p2_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_rx_pw_p2_reg(nrf24l01_t const* nrf24l01,
+                                         nrf24l01_rx_pw_p2_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_rx_pw_p2_reg(nrf24l01_t const* nrf24l01,
                                          nrf24l01_rx_pw_p2_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_rx_pw_p3_reg(nrf24l01_t const* nrf24l01, nrf24l01_rx_pw_p3_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_rx_pw_p3_reg(nrf24l01_t const* nrf24l01,
+                                         nrf24l01_rx_pw_p3_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_rx_pw_p3_reg(nrf24l01_t const* nrf24l01,
                                          nrf24l01_rx_pw_p3_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_rx_pw_p4_reg(nrf24l01_t const* nrf24l01, nrf24l01_rx_pw_p4_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_rx_pw_p4_reg(nrf24l01_t const* nrf24l01,
+                                         nrf24l01_rx_pw_p4_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_rx_pw_p4_reg(nrf24l01_t const* nrf24l01,
                                          nrf24l01_rx_pw_p4_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_rx_pw_p5_reg(nrf24l01_t const* nrf24l01, nrf24l01_rx_pw_p5_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_rx_pw_p5_reg(nrf24l01_t const* nrf24l01,
+                                         nrf24l01_rx_pw_p5_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_rx_pw_p5_reg(nrf24l01_t const* nrf24l01,
                                          nrf24l01_rx_pw_p5_reg_t const* reg);
 
 nrf24l01_err_t nrf24l01_get_fifo_status_reg(nrf24l01_t const* nrf24l01,
                                             nrf24l01_fifo_status_reg_t* reg);
 
-nrf24l01_err_t nrf24l01_get_dynpd_reg(nrf24l01_t const* nrf24l01, nrf24l01_dynpd_reg_t* reg);
-nrf24l01_err_t nrf24l01_set_dynpd_reg(nrf24l01_t const* nrf24l01, nrf24l01_dynpd_reg_t const* reg);
+nrf24l01_err_t nrf24l01_get_dynpd_reg(nrf24l01_t const* nrf24l01,
+                                      nrf24l01_dynpd_reg_t* reg);
+nrf24l01_err_t nrf24l01_set_dynpd_reg(nrf24l01_t const* nrf24l01,
+                                      nrf24l01_dynpd_reg_t const* reg);
 
-nrf24l01_err_t nrf24l01_get_feature_reg(nrf24l01_t const* nrf24l01, nrf24l01_feature_reg_t* reg);
+nrf24l01_err_t nrf24l01_get_feature_reg(nrf24l01_t const* nrf24l01,
+                                        nrf24l01_feature_reg_t* reg);
 nrf24l01_err_t nrf24l01_set_feature_reg(nrf24l01_t const* nrf24l01,
                                         nrf24l01_feature_reg_t const* reg);
 
