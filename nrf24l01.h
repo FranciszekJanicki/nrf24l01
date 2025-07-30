@@ -5,6 +5,10 @@
 #include "nrf24l01_config.h"
 #include "nrf24l01_registers.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct {
     nrf24l01_config_t config;
     nrf24l01_interface_t interface;
@@ -210,5 +214,9 @@ nrf24l01_err_t nrf24l01_send_w_ack_payload_p5_cmd(nrf24l01_t const* nrf24l01);
 nrf24l01_err_t nrf24l01_send_w_tx_payload_noack_cmd(nrf24l01_t const* nrf24l01);
 
 nrf24l01_err_t nrf24l01_send_nop_cmd(nrf24l01_t const* nrf24l01);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // NRF24L01_NRF24L01_H

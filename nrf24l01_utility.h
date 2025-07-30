@@ -6,6 +6,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 inline uint8_t nrf24l01_pipe_aw_to_address_bytes(
     nrf24l01_pipe_address_len_t address_width)
 {
@@ -185,5 +189,9 @@ inline uint32_t get_time_enhcanced_shock_burst_cycle_ns(
                                   air_rate) +
            air_rate_to_irq_time_ns(air_rate);
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // NRF24L01_NRF24L01_UTILITY_H

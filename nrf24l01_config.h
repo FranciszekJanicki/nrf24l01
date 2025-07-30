@@ -4,6 +4,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define NRF24L01_TIME_STANDBY_2A_NS 130000UL
 
 typedef enum {
@@ -153,5 +157,9 @@ typedef struct {
     nrf24l01_err_t (*bus_transmit)(void*, uint8_t const*, size_t);
     nrf24l01_err_t (*bus_receive)(void*, uint8_t*, size_t);
 } nrf24l01_interface_t;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // NRF24L01_NRF24L01_CONFIG_H

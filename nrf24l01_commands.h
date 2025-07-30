@@ -3,6 +3,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef enum {
     NRF24L01_CMD_RX_PAYLOAD = 0b01100001,
     NRF24L01_CMD_TX_PAYLOAD = 0b10100000,
@@ -32,5 +36,9 @@ typedef struct {
 typedef struct {
     uint8_t payload[32];
 } nrf24l01_rx_payload_cmd_t;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // NRF24L01_NRF24L01_COMMANDS_H

@@ -3,6 +3,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct {
     uint8_t mask_rx_dr : 1;
     uint8_t mask_tx_ds : 1;
@@ -142,5 +146,9 @@ typedef struct {
     uint8_t en_ack_pay : 1;
     uint8_t en_dyn_ack : 1;
 } nrf24l01_feature_reg_t;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // NRF24L01_NRF24L01_REGISTERS_H
